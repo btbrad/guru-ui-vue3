@@ -37,6 +37,15 @@ export const props = {
     type: String as PropType<ISize>,
     default: 'medium',
   },
+  round: {
+    type: Boolean,
+    default: false,
+  },
+
+  plain: {
+    type: Boolean,
+    default: false,
+  },
 }
 
 export default defineComponent({
@@ -64,17 +73,20 @@ export default defineComponent({
     return () => (
       <button
         class={`
-        py-${size[props.size].y}
-      px-4
-      font-semibold
-      rounded-lg
-      shadow-md
-      text-white
-      bg-${props.color}-500
-      hover:bg-${props.color}-700
-      border-none
-      cursor-pointer
-    `}
+          py-${size[props.size].y}
+          px-${size[props.size].x}
+          ${props.round ? 'rounded-full' : 'rounded-lg'}
+          bg-${props.color}-${props.plain ? '100' : '500'}
+          hover:bg-${props.color}-400
+          border-${props.color}-${props.plain ? '500' : '500'}
+          cursor-pointer
+          border-solid
+          text-${props.plain ? props.color + '-500' : 'white-500'}
+          text-${size[props.size].text}
+          hover:text-white
+          transition duration-300 ease-in-out transform hover:scale-105
+          mx-1
+        `}
       >
         {props.icon !== '' ? (
           <i class={`i-ic-baseline-${props.icon} p-3`}></i>

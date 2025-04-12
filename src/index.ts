@@ -10,6 +10,7 @@ createApp({
   template: `
       <div>
         <SButton color="blue">蓝色按钮</SButton>
+        <SButton color="blue" round plain icon="search" ></SButton>
         <SButton color="green" icon="edit" size="large"></SButton>
         <SButton color="gray">灰色按钮</SButton>
         <SButton color="yellow">黄色按钮</SButton>
